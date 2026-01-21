@@ -12,7 +12,7 @@ list_of_files = [
     "hate/components/data_transformation.py",
     "hate/components/model_evaluation.py",
     "hate/components/model_pusher.py",
-    "hate/components/_model_trainer.py",
+    "hate/components/model_trainer.py",
     "hate/configuration/__init__.py",
     "hate/configuration/gcloud_syncer.py",
     "hate/constants/__init__.py",

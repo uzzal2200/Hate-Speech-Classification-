@@ -1,0 +1,62 @@
+from dataclasses import dataclass
+from hate.constants import *
+import os
+
+
+@dataclass
+class DataIngestionConfig:
+    def __init__(self):
+        self.SOURCE_DATA_PATH: str = DATA_SOURCE_PATH
+        self.DATA_INGESTION_ARTIFACTS_DIR: str = os.path.join(os.getcwd(), ARTIFACTS_DIR, DATA_INGESTION_ARTIFACTS_DIR)
+        self.INGESTED_FILE_PATH: str = os.path.join(self.DATA_INGESTION_ARTIFACTS_DIR, DATA_INGESTION_FILE_NAME)
+
+
+@dataclass
+class DataTransformationConfig:
+    def __init__(self):
+        self.DATA_TRANSFORMATION_ARTIFACTS_DIR: str = os.path.join(os.getcwd(), ARTIFACTS_DIR, DATA_TRANSFORMATION_ARTIFACTS_DIR)
+        self.TRANSFORMED_FILE_PATH = os.path.join(self.DATA_TRANSFORMATION_ARTIFACTS_DIR, TRANSFORMED_FILE_NAME)
+        self.ID = ID
+        self.AXIS = AXIS
+        self.INPLACE = INPLACE
+        self.DROP_COLUMNS = DROP_COLUMNS
+        self.CLASS = CLASS
+        self.LABEL = LABEL
+        self.TWEET = TWEET
+
+
+@dataclass
+class ModelTrainerConfig:
+    def __init__(self):
+        self.TRAINED_MODEL_DIR: str = os.path.join(os.getcwd(), ARTIFACTS_DIR, MODEL_TRAINER_ARTIFACTS_DIR)
+        self.TRAINED_MODEL_PATH = os.path.join(self.TRAINED_MODEL_DIR, TRAINED_MODEL_NAME)
+        self.TOKENIZER_PATH = os.path.join(self.TRAINED_MODEL_DIR, TOKENIZER_NAME)
+        self.X_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TEST_FILE_NAME)
+        self.Y_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, Y_TEST_FILE_NAME)
+        self.X_TRAIN_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TRAIN_FILE_NAME)
+        self.MAX_WORDS = MAX_WORDS
+        self.MAX_LEN = MAX_LEN
+        self.LOSS = LOSS
+        self.METRICS = METRICS
+        self.ACTIVATION = ACTIVATION
+        self.LABEL = LABEL
+        self.TWEET = TWEET
+        self.RANDOM_STATE = RANDOM_STATE
+        self.EPOCH = EPOCH
+        self.BATCH_SIZE = BATCH_SIZE
+        self.VALIDATION_SPLIT = VALIDATION_SPLIT
+
+
+@dataclass
+class ModelEvaluationConfig:
+    def __init__(self):
+        self.MODEL_EVALUATION_MODEL_DIR: str = os.path.join(os.getcwd(), ARTIFACTS_DIR, MODEL_EVALUATION_ARTIFACTS_DIR)
+        self.METRICS_FILE_PATH: str = os.path.join(self.MODEL_EVALUATION_MODEL_DIR, MODEL_EVALUATION_FILE_NAME)
+
+
+@dataclass
+class ModelPusherConfig:
+    def __init__(self):
+        self.SAVED_MODEL_DIR = os.path.join(os.getcwd(), SAVED_MODEL_DIR)
+        self.SAVED_MODEL_PATH = os.path.join(self.SAVED_MODEL_DIR, SAVED_MODEL_NAME)
+    
